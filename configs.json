@@ -1,0 +1,4 @@
+{
+    "DATA_PATH" : "data/",
+    "DB_PATH" : "vectorstores/db/"
+}

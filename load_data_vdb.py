@@ -2,10 +2,12 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders.pdf import PyPDFDirectoryLoader
 from langchain.vectorstores import Chroma
 from langchain.embeddings import GPT4AllEmbeddings
+from utils import read_json
 
 
-DATA_PATH = "data/"
-DB_PATH = 'vectorstores/db/'
+configs = read_json('configs.json')
+DATA_PATH = configs["DATA_PATH"]
+DB_PATH = configs['DB_PATH']
 
 def create_vector_db():
     
