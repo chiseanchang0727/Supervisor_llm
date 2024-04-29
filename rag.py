@@ -1,7 +1,7 @@
 from langchain import hub
-from langchain.embeddings import GPT4AllEmbeddings
-from langchain.vectorstores import Chroma
-from langchain.llms import Ollama
+from langchain_community.embeddings import GPT4AllEmbeddings
+from langchain_community.vectorstores import Chroma
+from langchain_community.llms import Ollama
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.chains import RetrievalQA
@@ -28,9 +28,9 @@ def load_llm():
 def retrieval_qa_chain(llm, vectorstore):
     qa_chain = RetrievalQA.from_chain_type(
         llm,
-        retriver=vectorstore.as_retriver(),
+        retriever=vectorstore.as_retriever(),
         chain_type_kwargs={"prompt": QA_CHAIN_PROMPT},
-        return_source_document=True
+        return_source_documents=True
     )
     
     return qa_chain
@@ -38,7 +38,7 @@ def retrieval_qa_chain(llm, vectorstore):
 
 def qa_bot():
     llm = load_llm()
-    vectorstore = Chroma(persist_direcotry=DB_PATH, embedding_function=GPT4AllEmbeddings())
+    vectorstore = Chroma(persist_directory=DB_PATH, embedding_function=GPT4AllEmbeddings())
     qa = retrieval_qa_chain(llm, vectorstore)
     
     return qa

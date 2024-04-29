@@ -1,7 +1,7 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders.pdf import PyPDFDirectoryLoader
-from langchain.vectorstores import Chroma
-from langchain.embeddings import GPT4AllEmbeddings
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import GPT4AllEmbeddings
 from utils import read_json
 
 
