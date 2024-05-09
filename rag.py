@@ -5,6 +5,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.llms import Ollama
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain.chat_models import AzureChatOpenAI
 from langchain.chains import RetrievalQA
 import chainlit as cl
 from utils import read_json
@@ -24,12 +25,20 @@ Context: {context}
 Answer: [/INST]""")
 )
 
+OPENAI_API_BASE = 'https://yfyai-aoai-instance.openai.azure.com/'
+OPEN_AI_VERSION = '2023-05-15'
+GPT_DEPLOYMENT_NAME = 'gpt-4-32k'
+OPENAI_API_KEY = 'c60459f1ee6b4182b16c146727a3112a'
+OPENAI_API_TYPE = 'azure'
+
 def load_llm():
-    llm = Ollama(
-        model = 'llama3',
-        verbose = 'True',
-        callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
-    )
+    llm = AzureChatOpenAI(
+    azure_endpoint=OPENAI_API_BASE,
+    openai_api_version=OPEN_AI_VERSION,
+    azure_deployment=GPT_DEPLOYMENT_NAME,
+    openai_api_key=OPENAI_API_KEY,
+    openai_api_type="azure",
+)
     
     return llm
 
