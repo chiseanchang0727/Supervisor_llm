@@ -1,0 +1,21 @@
+Here are the three tuples written in JSON format with the labels (主體, 關係, 對象) and answers in Traditional Chinese:
+
+```
+[
+  {
+    "主體": "內政部 (Ministry of the Interior)",
+    "關係": "為殯葬業的管理者，制定殯葬管理條例以規範殯葬業的運作。",
+    "對象": "殯葬業"
+  },
+  {
+    "主體": "殯葬業",
+    "關係": "需要法制的預期和掌握，以便在運作中能夠順暢地運行。",
+    "對象": "法制"
+  },
+  {
+    "主體": "法制",
+    "關係": "是內政部和殯葬業之間的關係，透過法制來規範殯葬業的運作。",
+    "對象": "內政部, 殯葬業"
+  }
+]
+```
